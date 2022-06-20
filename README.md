@@ -79,6 +79,20 @@ print(i) // 12
 
 ## Development Instructions
 
+Download the Oracle client files from Oracle: [Oracle Instant Client Downloads for Linux x86-64 (64-bit)](https://www.oracle.com/database/technologies/instant-client/linux-x86-64-downloads.html)
+
+Download these three:
+- instantclient-sdk-linux.x64-21.5.0.0.0dbru.zip
+- instantclient-sqlplus-linux.x64-21.5.0.0.0dbru.zip
+- instantclient-basiclite-linux.x64-21.5.0.0.0dbru.zip
+
+Note: I extracted all 3 zip files to $HOME/bin/oracleclient. Then, I adjusted the two variables below to:
+```bash
+export ORACLE_INCLUDE=$HOME/bin/oracleclient/sdk/include/
+export oracle_lib=$HOME/bin/oracleclient
+```
+
+
 ```bash
 # Set environment variables
 $ export DART_SDK=/path/to/dart-sdk
@@ -88,8 +102,9 @@ $ export ORACLE_LIB=/usr/lib/oracle/12.1/client64/lib
 
 # Get dependencies and setup grinder
 $ cd oracle.dart
-$ pub get
-$ pub global activate grinder
+$ dart pub get
+$ dart pub global activate grinder
+$ export PATH="$PATH":"$HOME/.pub-cache/bin"
 
 # To build
 $ grind
